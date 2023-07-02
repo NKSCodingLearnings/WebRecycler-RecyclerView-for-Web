@@ -1,0 +1,14 @@
+web-recycler{
+    display: block;
+    overflow: auto;
+    box-sizing: border-box;
+}
+#webRecycler{
+    max-width: 1080px;
+    border: 1px solid gainsboro;
+    height: 90vh;
+    margin: auto;
+}
+h1{
+    margin: 5px;
+}
