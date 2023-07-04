@@ -2,11 +2,8 @@ class WebRecycler extends HTMLElement{
     adapter = null; dataSize = 0;;
     container; holders = [];firstTime = false;
     constructor(){
-        // For checking that git working properly or not
         super();
-        // just
         this.container = document.createElement('div');
-        let y = 0;
         this.observer = new IntersectionObserver((entries,observer)=>{
             for (let i = 0; i < entries.length; i++) {
                 const entrie = entries[i];
@@ -14,11 +11,12 @@ class WebRecycler extends HTMLElement{
                     entrie.target.firstTime = false;
                 }else{
                     if (entrie.isIntersecting) {
+                        console.log("INTER");
                         if (entrie.rootBounds.bottom<=entrie.boundingClientRect.bottom) {
                             // come in from bottom side
                             let last = this.container.lastElementChild;
                             let p = last.position + 1;
-                            if(p<this.dataSize){
+                            if(p < this.dataSize){
                                 let holder = this.getHolder();
                                 this.adapter.onBindData(p,holder);
                                 this.container.appendChild(holder);
@@ -44,22 +42,26 @@ class WebRecycler extends HTMLElement{
                             }
                         }
                     }else{
-                        if(this.clientHeight + 200 <= this.container.clientHeight){
-                            let toRemove;
-                            if (entrie.rootBounds.bottom<=entrie.boundingClientRect.bottom) {
-                                // go out from bottom side
-                                toRemove = this.container.lastElementChild;
-                            }else{
-                                toRemove = this.container.firstElementChild;
-                                // come out from top side
+                        console.log("OUT");
+                        if (entrie.rootBounds.bottom<=entrie.boundingClientRect.bottom) {
+                            // go out from bottom side
+                            let last = this.container.lastElementChild;
+                            if (entrie.rootBounds.bottom + 200 <= last.getBoundingClientRect().top) {
+                                last.remove();
+                                this.holders.push(last);
                             }
-                            toRemove.remove();
-                            this.holders.push(toRemove);
+                        }else{
+                            // come out from top side
+                            let first = this.container.firstElementChild;
+                            if (entrie.rootBounds.top - 200 >= first.getBoundingClientRect().bottom) {
+                                first.remove();
+                                this.holders.push(first);
+                            }
                         }
                     }
                 }
             }
-        },{root:this,rootMargin:'100px'});
+        },{root:this});
     }
     setAdapter(adap){
         console.log("setAdapter");
@@ -78,10 +80,10 @@ class WebRecycler extends HTMLElement{
     }
     createAtFirstTime(){
         let position = 0;
-        while (this.container.clientHeight < this.clientHeight +200 && position < this.dataSize) {
+        while (this.container.clientHeight < this.clientHeight + 200 && position < this.dataSize) {
             let holder = this.getHolder();
-            this.adapter.onBindData(position,holder);
             this.container.appendChild(holder);
+            this.adapter.onBindData(position,holder);
             holder.position = position;
             if (holder.firstTime === undefined) {
                 this.observer.observe(holder);
@@ -105,3 +107,11 @@ export class WRAdapter {
     onBindData(position,holder){}
     getItemSize(){}
 }
+// export class NodeHolder{
+//     itemNode;
+//     constructor(root){
+//         console.log("INDEX W");
+//         this.itemNode = root;
+//         console.log(this.itemNode);
+//     }
+// }
