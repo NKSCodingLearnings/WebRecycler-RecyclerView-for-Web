@@ -6,7 +6,7 @@ class Adapter extends WRAdapter{
     super();
   }
   onCreateNode(){
-    console.log("onCreateNode");
+    let   =  console.log("onCreateNode");
     let h1 = document.createElement('h1');
     return h1;
   }
@@ -23,5 +23,3 @@ const webRecycler = document.getElementById("webRecycler");
 const adapter = new Adapter();
 webRecycler.setAdapter(adapter);
 // https://github.com/NKSCodingLearnings/WebRecycler-RecyclerView-for-Web.git
-
-
