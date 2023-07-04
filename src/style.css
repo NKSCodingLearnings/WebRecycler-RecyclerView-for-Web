@@ -1,49 +1,14 @@
-body{
-    margin: 0;
-}
 web-recycler{
     display: block;
     overflow: auto;
     box-sizing: border-box;
 }
 #webRecycler{
-    /* max-width: 1080px; */
-    height: 100vh;
-    margin: auto;
-    padding: 10px;
-}
-/* #webRecycler::-webkit-scrollbar{
-    display: none;
-} */
-.post{
     max-width: 1080px;
     border: 1px solid gainsboro;
-    border-radius: 7px;
-    padding: 10px;
-    margin: 10px auto;
-    display: flex;
-    align-items: start;
-  }
-  .post-title{
-    display: block;
-    font-size: 25px;
-    font-weight: bold;
-  }
-  .post-desc{
-    font-size: 18px;
-    margin-top: 5px;
-    display: block;
-  }
-  .post-btn{
-    margin-top: 10px;
-    display: inline-block;
-    padding: 5px 10px;
-    border: 2px solid purple;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: bold;
-  }
-  .post-btn:hover{
-    color: white;
-    background: purple;
-  }
+    height: 90vh;
+    margin: auto;
+}
+h1{
+    margin: 5px;
+}
