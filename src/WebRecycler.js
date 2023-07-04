@@ -3,6 +3,7 @@ class WebRecycler extends HTMLElement{
     container; holders = [];firstTime = false;
     constructor(){
         super();
+        // just
         this.container = document.createElement('div');
         this.observer = new IntersectionObserver((entries,observer)=>{
             for (let i = 0; i < entries.length; i++) {
