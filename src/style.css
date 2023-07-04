@@ -1,14 +1,46 @@
+body{
+    margin: 0;
+}
 web-recycler{
     display: block;
     overflow: auto;
     box-sizing: border-box;
 }
 #webRecycler{
-    max-width: 1080px;
-    border: 1px solid gainsboro;
-    height: 90vh;
-    margin: auto;
+    padding: 10px;
+    /* max-width: 1080px; */
+    height: 100vh;
+    /* border: 1px solid gainsboro; */
+    /* margin: auto; */
 }
-h1{
-    margin: 5px;
+.post{
+    max-width: 1080px;
+    margin: 10px auto;
+    display: flex;
+    align-items: start;
+    padding: 10px;
+    border: 1px solid gainsboro;
+    border-radius: 5px;
+}
+.post-title{
+    font-size: 25px;
+    font-weight: bold;
+    display: block;
+}
+.post-desc{
+    font-size: 18px;
+    display: block;
+}
+.post-btn{
+    display: inline-block;
+    margin-top: 10px;
+    border: 2px solid purple;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 5px 10px;
+}
+.post-btn:hover{
+    background: purple;
+    color: white;
 }
